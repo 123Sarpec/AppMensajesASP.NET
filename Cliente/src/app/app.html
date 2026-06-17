@@ -1,0 +1,10 @@
+<app-nav />
+<!-- /*llmamos el controlador de mienbros para que se muestre el listado de usuarios*/ -->
+<!-- <app-home /> -->
+<!-- <button class="btn btn-accent btn-outline">Three</button> -->
+<div
+    [class.mt-24]="router.url === '/'"
+    [class.container]="router.url !== '/'"
+    [class.mx-auto]="router.url !== '/'">
+    <router-outlet />
+</div>
