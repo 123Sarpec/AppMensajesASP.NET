@@ -4,6 +4,9 @@ import { ListaMiembros } from '../features/miembros/lista-miembros/lista-miembro
 import { Listas, } from '../features/listas/listas';
 import { Mensajes } from '../features/mensajes/mensajes';
 import { authGuard } from '../core/guards/auth-guard';
+import { TestErrors } from '../features/test-errors/test-errors';
+import { NoEncontrado } from '../compartido/errors/no-encontrado/no-encontrado';
+
 
 export const routes: Routes = [
 
@@ -20,6 +23,9 @@ export const routes: Routes = [
         ]
     },
 
-    { path: '**', component: Home },
+    { path: '**', component: TestErrors,  },
+    { path: 'errors', component: NoEncontrado },
+    // { path: '**', component: NoEncontrado },
+
 
 ];

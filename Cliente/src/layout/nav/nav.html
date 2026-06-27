@@ -1,80 +1,50 @@
 <!-- <p>nav works!</p> -->
 
-<header
-  class="h-25 md:h-20 p-3 w-full fixed top-0 z-50 bg-linear-to-r from-success-focus to-success"
->
+<header class="h-25 md:h-20 p-3 w-full fixed top-0 z-50 bg-linear-to-r from-success-focus to-success">
   <div class="flex flex-col md:flex-row items-center px-4 md:px-10 gap-4">
     <div class="text-white-auto">
-      <a
-        routerLink="/"
-        routerLinkActive="text-secondary"
-        [routerLinkActiveOptions]="{ exact: true }"
-        class="flex items-center gap-3 max-h-16 border-r-white border-r-2 pr-6"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-          class="size-7"
-        >
-          <path
-            fill-rule="evenodd"
+      <a routerLink="/" routerLinkActive="text-secondary" [routerLinkActiveOptions]="{ exact: true }"
+        class="flex items-center gap-3 max-h-16 border-r-white border-r-2 pr-6">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-7">
+          <path fill-rule="evenodd"
             d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
-            clip-rule="evenodd"
-          />
+            clip-rule="evenodd" />
         </svg>
         <h1 class="text-xl md:text-2xl font-semibold uppercase">ChatBlest</h1>
       </a>
     </div>
-    <nav
-      class="flex flex-wrap justify-center gap-4 my-2 uppercase text-sm md:text-lg text-white-auto"
-    >
+    <nav class="flex flex-wrap justify-center gap-4 my-2 uppercase text-sm md:text-lg text-white-auto">
       @if (accountService.usuarioActual()) {
-        <a routerLink="/miembros" routerLinkActive="text-secondary">Encuentros</a>
-        <a routerLink="/listas" routerLinkActive="text-secondary">Listas</a>
-        <a routerLink="/mensajes" routerLinkActive="text-secondary">Mensajes</a>
+      <a routerLink="/miembros" routerLinkActive="text-secondary">Encuentros</a>
+      <a routerLink="/listas" routerLinkActive="text-secondary">Listas</a>
+      <a routerLink="/mensajes" routerLinkActive="text-secondary">Mensajes</a>
       }
+      <a routerLink="/Error" routerLinkActive="text-secondary">Error</a>
     </nav>
     <div class="md:ml-auto w-full md:w-auto">
       @if (accountService.usuarioActual(); as usuario) {
-        <div class="dropdown dropdown-flex">
-          <div
-            tabindex="0"
-            role="button"
-            class="flex items-center gap-3 px-4 py-2 bg-base-200 rounded-xl shadow-md hover:bg-base-300 transition"
-          >
-            <img src="/usuario.png" alt="perfil" class="w-8 h-8 rounded-full" />
-            <span>{{ usuario.nombre }}</span>
-          </div>
-          <ul
-            tabindex="-1"
-            class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
-          >
-            <li><a>Editar perfil</a></li>
-            <li><a (click)="logout()">Cerrar sesión</a></li>
-            <!-- <li><a>Item 2</a></li> -->
-          </ul>
+      <div class="dropdown dropdown-flex">
+        <div tabindex="0" role="button"
+          class="flex items-center gap-3 px-4 py-2 bg-base-200 rounded-xl shadow-md hover:bg-base-300 transition">
+          <img src="/usuario.png" alt="perfil" class="w-8 h-8 rounded-full" />
+          <span>{{ usuario.nombre }}</span>
         </div>
+        <ul tabindex="-1" class="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
+          <li><a>Editar perfil</a></li>
+          <li><a (click)="logout()">Cerrar sesión</a></li>
+          <!-- <li><a>Item 2</a></li> -->
+        </ul>
+      </div>
       } @else {
-        <form #loginForm="ngForm" (ngSubmit)="login()" class="flex flex-col md:flex-row gap-3">
-          <div class="flex gap-3">
-            <input
-              [(ngModel)]="credenciales.email"
-              name="email"
-              type="text"
-              class="input w-full md:w-auto"
-              placeholder="Tu Email"
-            />
-            <input
-              [(ngModel)]="credenciales.password"
-              name="password"
-              type="password"
-              class="input w-full md:w-auto"
-              placeholder="Tu contraseña"
-            />
-          </div>
-          <button type="submit" class="btn btn-primary">Entrar</button>
-        </form>
+      <form #loginForm="ngForm" (ngSubmit)="login()" class="flex flex-col md:flex-row gap-3">
+        <div class="flex gap-3">
+          <input [(ngModel)]="credenciales.email" name="email" type="text" class="input w-full md:w-auto"
+            placeholder="Tu Email" />
+          <input [(ngModel)]="credenciales.password" name="password" type="password" class="input w-full md:w-auto"
+            placeholder="Tu contraseña" />
+        </div>
+        <button type="submit" class="btn btn-primary">Entrar</button>
+      </form>
       }
     </div>
   </div>
