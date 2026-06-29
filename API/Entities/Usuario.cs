@@ -13,4 +13,9 @@ public class Usuario
     /*permite almacenar la contraseña en formato hash */
     public required byte[] PasswordSalt { get; set; }
 
+
+    // navegar en la propiedad  de miembros
+
+    public Miembros Miembros { get; set; } = null!;
+
 }
