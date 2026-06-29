@@ -6,7 +6,7 @@ import { Mensajes } from '../features/mensajes/mensajes';
 import { authGuard } from '../core/guards/auth-guard';
 import { TestErrors } from '../features/test-errors/test-errors';
 import { NoEncontrado } from '../compartido/errors/no-encontrado/no-encontrado';
-
+import { ErrorServidor } from '../compartido/errors/error-servidor/error-servidor';
 
 export const routes: Routes = [
 
@@ -22,10 +22,9 @@ export const routes: Routes = [
             { path: 'mensajes', component: Mensajes },
         ]
     },
-
+    { path: 'errors', component: TestErrors },
+    { path: 'no-encontrado', component: NoEncontrado },
+    { path: 'error-servidor', component: ErrorServidor},
     { path: '**', component: TestErrors,  },
-    { path: 'errors', component: NoEncontrado },
-    // { path: '**', component: NoEncontrado },
-
 
 ];

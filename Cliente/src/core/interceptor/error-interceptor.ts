@@ -2,8 +2,7 @@ import { HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { catchError } from 'rxjs';
 import { ToastServicio } from '../services/toast-servicio';
-import { Router } from '@angular/router';
-
+import { NavigationExtras, Router } from '@angular/router';
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const toast = inject (ToastServicio);
   const router = inject (Router);
@@ -30,10 +29,13 @@ catchError(error => {
         toast.mostrarError('Unauthorized')  
         break;
       case 404:
-      toast.mostrarError('No encontrado')
+      // toast.mostrarError('No encontrado')
+      router.navigateByUrl('/no-encontrado')
         break;
       case 500:
-        toast.mostrarError('Error en el servidor')
+        // toast.mostrarError('Error en el servidor')
+        const navigationExtras: NavigationExtras = {state: {error: error.error}}
+        router.navigateByUrl('/error-servidor', navigationExtras)
         break;
         case 403:
         // toast.mostrarError('Error en el servidor')
