@@ -6,6 +6,7 @@ public class Miembros
 
 {// CRAMOS LAS PROPIEDADES DE LOS MIEMPBROS 
     public string Id { get; set; } = null!;
+    public required string Email { get; set; }
     public DateOnly FechaNacimiento { get; set; }
 
     public string? ImagenUrl { get; set; }

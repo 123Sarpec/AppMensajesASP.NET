@@ -19,17 +19,18 @@ public class Introducir
         {
             Console.WriteLine("no se introduce el miemembro data====");
 
-            // foreach (var miembro in miembros)
-            // {
-            //     // var usuario new Usuario
-            //     // {
-            //     //     Id = miembro.Id,
-            //     //     // Email = miembro.Email,
-            //     //     Nombre = miembro.Nombre,
-            //     //     ImagenUrl = miembro.ImagenUrl,
+            foreach (var miembro in miembros)
+            {
+                var usuario new Usuario
+                {
+                    Id = miembro.Id,
+                    Email = miembro.Email,
+                    Nombre = miembro.Nombre,
+                    ImagenUrl = miembro.ImagenUrl,
+                    // PasswordHash = miembro.
 
-            //     // },
-            // }
+                }
+            }
         }
     }
 }
