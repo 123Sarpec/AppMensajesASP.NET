@@ -17,9 +17,13 @@ public class Miembros
     public DateTime Creada { get; set; } = DateTime.UtcNow;
     public required string Genero { get; set; }
     public string? Descripcion { get; set; }
-    public required string Cuidad { get; set; }
+    public required string Ciudad { get; set; }
     public required string Pais { get; set; }
+
     // navegar las propieedades 
+
+    public List<Fotos> Fotos { get; set; } = [];
+
     [ForeignKey(nameof(Id))]//migramos el id de mimbro para crear nuevo
     public Usuario usuario { get; set; } = null!;
 

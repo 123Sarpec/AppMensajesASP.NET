@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using API.ExepcionSIntermedio;
+using API.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -53,5 +54,21 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+using var scope = app.Services.CreateScope();
+try
+{
+    var context = app.Services.GetRequiredService<DBContext>();
+    await context.Database.MigrateAsync();
+    await Introducir.IntroducirUsuario(context);
+
+}
+catch (Exception error)
+{
+    var logger = app.Services.GetRequiredService<ILogger<Program>>();
+    // throw new Exception("Error al migrar la base de datos", error);
+    logger.LogError(error, "Error al migrar la base de datos");
+}
+
 
 app.Run();

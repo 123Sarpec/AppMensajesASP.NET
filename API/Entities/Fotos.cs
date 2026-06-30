@@ -20,7 +20,9 @@ public class Fotos
     // public Usuario usuario { get; set; } = null!;
 
     // navegar en las propiedades  de miembros
-    public Miembros miembros { get; set; } = null!;
+    public Miembros miembro { get; set; } = null!;
+
+    public string MiembrosId { get; set; } = null!;
 }
 
 

@@ -17,5 +17,5 @@ public class Usuario
     // navegar en la propiedad  de miembros
 
     public Miembros Miembros { get; set; } = null!;
-
+    // public Miembros Miembro { get; internal set; }
 }

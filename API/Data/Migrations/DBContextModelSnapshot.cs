@@ -37,7 +37,7 @@ namespace API.Data.Migrations
 
                     b.HasIndex("miembrosId");
 
-                    b.ToTable("Fotos");
+                    b.ToTable("Fotos", (string)null);
                 });
 
             modelBuilder.Entity("API.Entities.Miembros", b =>
@@ -79,7 +79,7 @@ namespace API.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Miembros");
+                    b.ToTable("Miembros", (string)null);
                 });
 
             modelBuilder.Entity("API.Entities.Usuario", b =>
@@ -108,7 +108,7 @@ namespace API.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("Usuarios", (string)null);
                 });
 
             modelBuilder.Entity("API.Entities.Fotos", b =>
