@@ -25,7 +25,7 @@ public class Miembros
     public List<Fotos> Fotos { get; set; } = [];
 
     [ForeignKey(nameof(Id))]//migramos el id de mimbro para crear nuevo
-    public Usuario usuario { get; set; } = null!;
+    public Usuario Usuario { get; set; } = null!;
 
 
 }

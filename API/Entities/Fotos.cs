@@ -7,6 +7,7 @@ public class Fotos
     // public  FechaNacimiento { get; set; }
 
     public string? PublicidadId { get; set; }
+    // public required string Email { get; set;}
     public required string Url { get; set; }
 
     // public DateTime UltimoActivo { get; set; } = DateTime.UtcNow;
@@ -20,7 +21,7 @@ public class Fotos
     // public Usuario usuario { get; set; } = null!;
 
     // navegar en las propiedades  de miembros
-    public Miembros miembro { get; set; } = null!;
+    public Miembros Miembro { get; set; } = null!;
 
     public string MiembrosId { get; set; } = null!;
 }

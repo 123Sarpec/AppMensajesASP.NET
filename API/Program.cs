@@ -23,6 +23,7 @@ builder.Services.AddDbContext<DBContext>(opt =>
 
 builder.Services.AddCors();
 builder.Services.AddScoped<TokenServicio, TokenServicios>();
+builder.Services.AddScoped<RepositorioMiebro, RepositorioMiebroData>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
     var TokenKey = builder.Configuration["TokenKey"] ?? throw new Exception("TokenKey no encontrado");
@@ -55,6 +56,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+
+// Migramos la base de datos de miembro
 using var scope = app.Services.CreateScope();
 try
 {

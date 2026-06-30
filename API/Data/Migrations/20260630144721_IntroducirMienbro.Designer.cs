@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20260629205125_MiembroEntidadAgregada")]
-    partial class MiembroEntidadAgregada
+    [Migration("20260630144721_IntroducirMienbro")]
+    partial class IntroducirMienbro
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,6 +26,10 @@ namespace API.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("MiembrosId")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("PublicidadId")
                         .HasColumnType("TEXT");
 
@@ -33,12 +37,9 @@ namespace API.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("miembrosId")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("miembrosId");
+                    b.HasIndex("MiembrosId");
 
                     b.ToTable("Fotos");
                 });
@@ -48,14 +49,17 @@ namespace API.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Creada")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Cuidad")
+                    b.Property<string>("Ciudad")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTime>("Creada")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Descripcion")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -116,22 +120,29 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entities.Fotos", b =>
                 {
-                    b.HasOne("API.Entities.Miembros", "miembros")
-                        .WithMany()
-                        .HasForeignKey("miembrosId");
+                    b.HasOne("API.Entities.Miembros", "Miembro")
+                        .WithMany("Fotos")
+                        .HasForeignKey("MiembrosId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("miembros");
+                    b.Navigation("Miembro");
                 });
 
             modelBuilder.Entity("API.Entities.Miembros", b =>
                 {
-                    b.HasOne("API.Entities.Usuario", "usuario")
+                    b.HasOne("API.Entities.Usuario", "Usuario")
                         .WithOne("Miembros")
                         .HasForeignKey("API.Entities.Miembros", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("usuario");
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("API.Entities.Miembros", b =>
+                {
+                    b.Navigation("Fotos");
                 });
 
             modelBuilder.Entity("API.Entities.Usuario", b =>
